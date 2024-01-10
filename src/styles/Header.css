@@ -1,0 +1,15 @@
+.pokemon__logo {
+  height: 5rem;
+  padding: 1.5rem;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 1rem;
+  width: 100%;
+  gap: 36rem;
+}
