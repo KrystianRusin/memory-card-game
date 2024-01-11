@@ -2,7 +2,7 @@ import React from "react";
 import PokemonLogo from "../assets/pokemon-23.svg";
 import "../styles/Header.css";
 
-const Header = ({ score }) => {
+const Header = ({ score, highScore }) => {
   return (
     <div className="header__container">
       <div className="img__container">
@@ -10,7 +10,7 @@ const Header = ({ score }) => {
       </div>
       <div className="score__container">
         <p>Score: {score}</p>
-        <p>High Score: 0</p>
+        <p>High Score: {highScore}</p>
       </div>
     </div>
   );

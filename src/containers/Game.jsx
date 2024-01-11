@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/Game.css";
 import PokemonCard from "../components/PokemonCard";
 
-const Game = ({ updateScore, resetScore }) => {
+const Game = ({ updateScore, resetScore, updateHighScore }) => {
   const [clicked, setClicked] = useState([]);
   const [pokemonCards, setPokemonCards] = useState([]);
 
@@ -13,6 +13,7 @@ const Game = ({ updateScore, resetScore }) => {
       resetScore();
       setClicked([]);
     } else {
+      updateHighScore();
       updateScore();
       generatePokemon();
       addClicked(id);
@@ -32,7 +33,7 @@ const Game = ({ updateScore, resetScore }) => {
     const promises = [];
     const generatedIds = new Set();
     while (generatedIds.size < 10) {
-      const randomId = Math.floor(Math.random() * 20) + 1; // Pokemon API currently has data till ID 898
+      const randomId = Math.floor(Math.random() * 100) + 1; // Pokemon API currently has data till ID 898
       if (!generatedIds.has(randomId)) {
         generatedIds.add(randomId);
         promises.push(

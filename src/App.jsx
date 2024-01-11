@@ -6,6 +6,7 @@ import "./App.css";
 
 function App() {
   const [score, setScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
 
   const updateScore = () => {
     setScore((prevScore) => prevScore + 1);
@@ -16,13 +17,23 @@ function App() {
     setScore(0);
   };
 
+  const updateHighScore = () => {
+    if (score > highScore) {
+      setHighScore(score);
+    }
+  };
+
   return (
     <div className="content">
       <div className="header__container">
-        <Header score={score} />
+        <Header score={score} highScore={highScore} />
       </div>
       <div className="game__container">
-        <Game updateScore={updateScore} resetScore={resetScore} />
+        <Game
+          updateScore={updateScore}
+          resetScore={resetScore}
+          updateHighScore={updateHighScore}
+        />
       </div>
     </div>
   );
