@@ -2,18 +2,25 @@ import React, { useEffect, useState } from "react";
 import "../styles/Game.css";
 import PokemonCard from "../components/PokemonCard";
 
-const Game = ({ setScore }) => {
+const Game = ({ updateScore, resetScore }) => {
   const [clicked, setClicked] = useState([]);
   const [pokemonCards, setPokemonCards] = useState([]);
 
   const handleClick = (id) => {
-    console.log(id);
-    console.log(clicked);
     if (clicked.includes(id)) {
+      alert("You lose!");
+      addClicked(id);
+      resetScore();
       setClicked([]);
     } else {
-      setClicked((prevClicked) => [...prevClicked, id]);
+      updateScore();
+      generatePokemon();
+      addClicked(id);
     }
+  };
+
+  const addClicked = (id) => {
+    setClicked([...clicked, id]);
   };
 
   useEffect(() => {
@@ -23,13 +30,17 @@ const Game = ({ setScore }) => {
   const generatePokemon = () => {
     setPokemonCards([]);
     const promises = [];
-    for (let i = 0; i < 10; i++) {
-      const randomId = Math.floor(Math.random() * 800) + 1; // Pokemon API currently has data till ID 898
-      promises.push(
-        fetch(`https://pokeapi.co/api/v2/pokemon/${randomId}`).then(
-          (response) => response.json()
-        )
-      );
+    const generatedIds = new Set();
+    while (generatedIds.size < 10) {
+      const randomId = Math.floor(Math.random() * 20) + 1; // Pokemon API currently has data till ID 898
+      if (!generatedIds.has(randomId)) {
+        generatedIds.add(randomId);
+        promises.push(
+          fetch(`https://pokeapi.co/api/v2/pokemon/${randomId}`).then(
+            (response) => response.json()
+          )
+        );
+      }
     }
     Promise.all(promises).then((pokemonData) => {
       setPokemonCards(

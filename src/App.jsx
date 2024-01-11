@@ -8,16 +8,21 @@ function App() {
   const [score, setScore] = useState(0);
 
   const updateScore = () => {
-    setScore(score + 1);
+    setScore((prevScore) => prevScore + 1);
+    console.log(score);
+  };
+
+  const resetScore = () => {
+    setScore(0);
   };
 
   return (
     <div className="content">
       <div className="header__container">
-        <Header />
+        <Header score={score} />
       </div>
-      <div className="game__container" setScore={updateScore}>
-        <Game />
+      <div className="game__container">
+        <Game updateScore={updateScore} resetScore={resetScore} />
       </div>
     </div>
   );
