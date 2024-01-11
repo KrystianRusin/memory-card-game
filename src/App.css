@@ -1,6 +1,14 @@
 .content {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 96px;
+  justify-content: flex-start;
   min-height: 100vh;
   min-width: 100vw;
+}
+
+.game__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

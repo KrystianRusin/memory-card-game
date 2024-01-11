@@ -7,8 +7,12 @@ import "./App.css";
 function App() {
   return (
     <div className="content">
-      <Header />
-      <Game />
+      <div className="header__container">
+        <Header />
+      </div>
+      <div className="game__container">
+        <Game />
+      </div>
     </div>
   );
 }

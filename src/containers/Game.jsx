@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Game.css";
+import PokemonCard from "../components/PokemonCard";
 
 const Game = () => {
   const [clicked, setClicked] = useState([]);
@@ -21,11 +22,21 @@ const Game = () => {
       );
     }
     Promise.all(promises).then((pokemonData) => {
-      setPokemonCards(pokemonData.map((pokemon) => pokemon.name));
+      setPokemonCards(
+        pokemonData.map((pokemon) => ({ id: pokemon.id, name: pokemon.name }))
+      );
     });
   };
 
-  return <div>Game</div>;
+  return (
+    <div className="game__container">
+      <div className="pokemon__grid">
+        {pokemonCards.map((pokemon) => (
+          <PokemonCard key={pokemon.id} pokemon={pokemon} />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default Game;
