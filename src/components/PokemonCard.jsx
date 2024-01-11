@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../styles/PokemonCard.css";
 
-const PokemonCard = ({ pokemon }) => {
+const PokemonCard = ({ pokemon, handleClick }) => {
   const [sprite, setSprite] = useState("");
 
   useEffect(() => {
@@ -11,11 +11,9 @@ const PokemonCard = ({ pokemon }) => {
   }, [pokemon.id]);
 
   return (
-    <div>
-      <div className="pokemon__card">
-        <p className="pokemon__name">{pokemon.name}</p>
-        <img src={sprite} alt={pokemon.name} className="pokemon__image" />
-      </div>
+    <div className="pokemon__card" onClick={() => handleClick(pokemon.id)}>
+      <p className="pokemon__name">{pokemon.name}</p>
+      <img src={sprite} alt={pokemon.name} className="pokemon__image" />
     </div>
   );
 };
