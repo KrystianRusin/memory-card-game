@@ -4,11 +4,15 @@
   gap: 96px;
   justify-content: flex-start;
   min-height: 100vh;
-  min-width: 100vw;
+  min-width: 99vw;
 }
 
 .game__container {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.header__container {
+  padding-right: 5rem;
 }

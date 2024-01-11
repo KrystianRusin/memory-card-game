@@ -1,15 +1,27 @@
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  gap: 6rem;
+  align-items: center;
+  padding: 1rem;
+  width: 100%;
+}
+
+.img__container {
+  display: flex;
+  align-items: center;
+}
+
+.score__container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-family: "Press Start 2P", system-ui;
+}
+
 .pokemon__logo {
   height: 5rem;
   padding: 1.5rem;
   will-change: filter;
   transition: filter 300ms;
-}
-
-.header__container {
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-  padding: 1rem;
-  width: 100%;
-  gap: 36rem;
 }
